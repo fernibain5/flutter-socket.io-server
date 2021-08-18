@@ -8,22 +8,10 @@ const app = express();
 
 //Node Server
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+module.exports.io = require('socket.io')(server);
+require('./sockets/socket');
 
-//Sockets Messages
-io.on('connection', client => {
-    console.log('cliente conectado');
 
-    client.on('disconnect', () => {
-        console.log('cliente desconectada') 
-    });
-
-    client.on('mensaje', (payload) => {
-        console.log('Mensaje', payload);
-
-        io.emit('mensaje', {admin: 'Nuevo Mensaje'});
-    });
-});
 
 
 

@@ -1,5 +1,5 @@
 
-const io = require('../index')
+const io = require('../index');
 
 //Sockets Messages
 io.on('connection', client => {
