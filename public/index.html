@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Acceso Denegado</h1>
-    <script src="socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io();
 
@@ -22,9 +22,14 @@
 
         socket.emit('mensaje', {nombre: 'fernando'});
 
-        socket.on('mensaje', function(payload) {
-            console.log('escuchando:', payload);
+        socket.on('nuevo-mensaje', function(payload) {
+            console.log('Escuchando:', payload);
         });
+
+        socket.on('active-bands', (payload) => {
+            console.clear();
+            console.table(payload);
+        })
 
 
     </script>
